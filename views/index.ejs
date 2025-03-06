@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualisasi Algoritma Sorting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex flex-col items-center py-10">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-extrabold text-blue-600 mb-8 text-center">Visualisasi Algoritma Sorting</h1>
+
+      <form action="/sort" method="POST" class="mb-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <input type="text" name="numbers" placeholder="Masukkan angka, contoh: 5,3,8,4,2" class="border px-4 py-3 rounded-md w-full sm:w-96 text-lg shadow-sm" required />
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition duration-200">Sort</button>
+      </form>
+
+      <% if (inputArray) { %>
+      <h2 class="text-2xl font-semibold text-center mb-6">Input: <span class="text-blue-500 font-bold"><%= inputArray.join(", ") %></span></h2>
+
+      <!-- Grid untuk hasil sorting -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Bubble Sort -->
+        <div class="bg-white shadow-lg p-5 rounded-lg">
+          <h3 class="text-xl font-bold text-blue-500 mb-4 text-center">Bubble Sort</h3>
+          <div class="space-y-2">
+            <% bubbleSteps.forEach((step, index) => { %>
+            <p class="py-2 px-4 bg-gray-50 shadow-sm rounded-md"><strong>Step <%= index + 1 %>:</strong> <%= step.join(", ") %></p>
+            <% }) %>
+          </div>
+        </div>
+
+        <!-- Quick Sort -->
+        <div class="bg-white shadow-lg p-5 rounded-lg">
+          <h3 class="text-xl font-bold text-green-500 mb-4 text-center">Quick Sort</h3>
+          <div class="space-y-2">
+            <% quickSteps.forEach((step, index) => { %>
+            <p class="py-2 px-4 bg-gray-50 shadow-sm rounded-md"><strong>Step <%= index + 1 %>:</strong> <%= step.join(", ") %></p>
+            <% }) %>
+          </div>
+        </div>
+
+        <!-- Merge Sort -->
+        <div class="bg-white shadow-lg p-5 rounded-lg">
+          <h3 class="text-xl font-bold text-red-500 mb-4 text-center">Merge Sort</h3>
+          <div class="space-y-2">
+            <% mergeSteps.forEach((step, index) => { %>
+            <p class="py-2 px-4 bg-gray-50 shadow-sm rounded-md"><strong>Step <%= index + 1 %>:</strong> <%= step.join(", ") %></p>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
